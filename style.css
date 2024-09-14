@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #252222;
+    font-size: 1rem;
+}
+
+.wrapper {
+    width: 80%; 
+    margin: 80px auto; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slider {
+    width: 90%;
+    height: 50vw; 
+    max-height: 100vh; 
+    display: flex;
+    flex-direction: row; /* Помещаем слайды в одну строку */
+    overflow: hidden;
+}
+
+.slides {
+    flex: 0 0 100%; /* Каждый слайд занимает 100% ширины контейнера */
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.slides img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+/* Управляем видимостью слайдов с помощью transform */
+#slide1:checked ~ .slider {
+    transform: translateX(0%);
+}
+#slide2:checked ~ .slider {
+    transform: translateX(-100%);
+}
+#slide3:checked ~ .slider {
+    transform: translateX(-200%);
+}
+#slide4:checked ~ .slider {
+    transform: translateX(-300%);
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem; /* Отступы между контролами */
+    margin-top: 2vh;
+}
+
+.controls label {
+    cursor: pointer;
+    width: 1rem;
+    height: 1rem;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.controls label:hover {
+    background-color: #ddd;
+}
