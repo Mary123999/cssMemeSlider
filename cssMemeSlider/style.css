@@ -33,7 +33,7 @@ body {
 .slider {
     width: 100%;
     max-width: 600px;
-    height: 30vw;
+    height: 50vw;
     max-height: 400px;
     display: flex;
     overflow: hidden;
