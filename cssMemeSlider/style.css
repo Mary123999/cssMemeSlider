@@ -7,11 +7,16 @@
 body {
     background-color: #252222;
     font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .wrapper {
-    width: 80%; 
-    margin: 80px auto; 
+    width: 80%;
+    margin: 80px auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,16 +24,21 @@ body {
 
 .slider {
     width: 90%;
-    height: 50vw; 
-    max-height: 100vh; 
+    height: 50vw;
+    max-height: 100vh;
     display: flex;
-    flex-direction: row; /* Помещаем слайды в одну строку */
     overflow: hidden;
+    position: relative;
 }
 
 .slides {
-    flex: 0 0 100%; /* Каждый слайд занимает 100% ширины контейнера */
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    display: flex;
+    width: 400%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slides > div {
+    flex: 1 0 100%;
 }
 
 .slides img {
@@ -41,24 +51,24 @@ input[type="radio"] {
     display: none;
 }
 
-/* Управляем видимостью слайдов с помощью transform */
-#slide1:checked ~ .slider {
+#slide1:checked ~ .slider .slides {
     transform: translateX(0%);
 }
-#slide2:checked ~ .slider {
+#slide2:checked ~ .slider .slides {
     transform: translateX(-100%);
 }
-#slide3:checked ~ .slider {
+#slide3:checked ~ .slider .slides {
     transform: translateX(-200%);
 }
-#slide4:checked ~ .slider {
+#slide4:checked ~ .slider .slides {
     transform: translateX(-300%);
 }
 
+/* Controls */
 .controls {
     display: flex;
     justify-content: center;
-    gap: 1rem; /* Отступы между контролами */
+    gap: 1rem;
     margin-top: 2vh;
 }
 
@@ -73,4 +83,31 @@ input[type="radio"] {
 
 .controls label:hover {
     background-color: #ddd;
+}
+
+/* Text captions under controls */
+.caption-wrapper {
+    margin-top: 1rem;
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.caption {
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+/* Visible captions depending on the selected slide */
+#slide1:checked ~ .caption-wrapper #caption1 {
+    opacity: 1;
+}
+#slide2:checked ~ .caption-wrapper #caption2 {
+    opacity: 1;
+}
+#slide3:checked ~ .caption-wrapper #caption3 {
+    opacity: 1;
+}
+#slide4:checked ~ .caption-wrapper #caption4 {
+    opacity: 1;
 }
