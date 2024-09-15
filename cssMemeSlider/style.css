@@ -61,8 +61,8 @@ input[type="radio"] {
     display: none;
 }
 input[type="radio"]:checked + .controls label {
-    background-color: transparent; /* Прозрачный фон для активной кнопки */
-    border: 2px solid #fff; /* Белый контур для активной кнопки */
+    background-color: transparent; 
+    border: 2px solid #fff; 
 }
 
 #slide1:checked ~ .slider-container .slider .slides {
@@ -78,14 +78,14 @@ input[type="radio"]:checked + .controls label {
     transform: translateX(-300%);
 }
 
-/* Captions and Controls */
+
 .caption-controls-wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     max-width: 600px;
-    margin-top: 1rem; /* добавим отступ для наглядности */
+    margin-top: 1rem; 
 }
 
 .caption-wrapper {
@@ -96,7 +96,7 @@ input[type="radio"]:checked + .controls label {
 }
 
 .caption {
-    display: none; /* Скрываем все captions по умолчанию */
+    display: none; 
     transition: opacity 0.5s;
 }
 
@@ -113,7 +113,6 @@ input[type="radio"]:checked + .controls label {
     display: block;
 }
 
-/* Controls */
 .controls {
     display: flex;
     gap: 1rem;
@@ -132,7 +131,7 @@ input[type="radio"]:checked + .controls label {
     background-color: #ddd;
 }
 
-/* Mobile version (320x568) */
+
 @media (max-width: 768px) {
     .slider-container {
         flex-direction: column;
