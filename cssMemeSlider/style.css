@@ -22,22 +22,23 @@ body {
     align-items: center;
 }
 
-.content-wrapper {
+.slider-container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
     width: 100%;
-    
+    position: relative;
 }
 
 .slider {
-    width: 70%;
+    width: 100%;
     max-width: 600px;
     height: 30vw;
     max-height: 400px;
     display: flex;
     overflow: hidden;
     position: relative;
+    margin-bottom: 1rem;
 }
 
 .slides {
@@ -53,68 +54,76 @@ body {
 .slides img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 input[type="radio"] {
     display: none;
 }
+input[type="radio"]:checked + .controls label {
+    background-color: transparent; /* Прозрачный фон для активной кнопки */
+    border: 2px solid #fff; /* Белый контур для активной кнопки */
+}
 
-#slide1:checked ~ .content-wrapper .slider .slides {
+#slide1:checked ~ .slider-container .slider .slides {
     transform: translateX(0%);
 }
-#slide2:checked ~ .content-wrapper .slider .slides {
+#slide2:checked ~ .slider-container .slider .slides {
     transform: translateX(-100%);
 }
-#slide3:checked ~ .content-wrapper .slider .slides {
+#slide3:checked ~ .slider-container .slider .slides {
     transform: translateX(-200%);
 }
-#slide4:checked ~ .content-wrapper .slider .slides {
+#slide4:checked ~ .slider-container .slider .slides {
     transform: translateX(-300%);
 }
 
-/* Captions */
+/* Captions and Controls */
+.caption-controls-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 1rem; /* добавим отступ для наглядности */
+}
+
 .caption-wrapper {
     flex: 1;
+    text-align: left;
     color: white;
     font-size: 1.5rem;
-    text-align: left;
-    padding-right: 1rem;
-    margin-top: 1rem;
 }
 
 .caption {
-    opacity: 0;
-    position: absolute;
-    transition: opacity 0.5s ease-in-out;
+    display: none; /* Скрываем все captions по умолчанию */
+    transition: opacity 0.5s;
 }
 
-#slide1:checked ~ .content-wrapper .caption-wrapper #caption1 {
-    opacity: 1;
+#slide1:checked ~ .slider-container .caption-controls-wrapper .caption-wrapper #caption1 {
+    display: block;
 }
-#slide2:checked ~ .content-wrapper .caption-wrapper #caption2 {
-    opacity: 1;
+#slide2:checked ~ .slider-container .caption-controls-wrapper .caption-wrapper #caption2 {
+    display: block;
 }
-#slide3:checked ~ .content-wrapper .caption-wrapper #caption3 {
-    opacity: 1;
+#slide3:checked ~ .slider-container .caption-controls-wrapper .caption-wrapper #caption3 {
+    display: block;
 }
-#slide4:checked ~ .content-wrapper .caption-wrapper #caption4 {
-    opacity: 1;
+#slide4:checked ~ .slider-container .caption-controls-wrapper .caption-wrapper #caption4 {
+    display: block;
 }
 
 /* Controls */
 .controls {
     display: flex;
-    justify-content: center;
     gap: 1rem;
-    margin-top: 1rem;
 }
 
 .controls label {
     cursor: pointer;
-    width: 1rem;
-    height: 1rem;
-    background-color: #fff;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: #004da6;
     border-radius: 50%;
     transition: background-color 0.3s;
 }
@@ -125,20 +134,23 @@ input[type="radio"] {
 
 /* Mobile version (320x568) */
 @media (max-width: 768px) {
-    .content-wrapper {
+    .slider-container {
         flex-direction: column;
         align-items: center;
     }
 
     .slider {
         width: 100%;
-        margin-bottom: 1rem;
+    }
+
+    .caption-controls-wrapper {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
 
     .caption-wrapper {
-        text-align: center;
         margin-bottom: 1rem;
-        padding-right: 0;
     }
 
     .controls {
