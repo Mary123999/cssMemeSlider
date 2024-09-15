@@ -94,20 +94,20 @@ input[type="radio"] {
 }
 
 .caption {
-    opacity: 0;
+    display: none; /* Скрываем все captions по умолчанию */
     transition: opacity 0.5s;
 }
 
-/* Visible captions depending on the selected slide */
+/* Показ текста в зависимости от активного слайда */
 #slide1:checked ~ .caption-wrapper #caption1 {
-    opacity: 1;
+    display: block;
 }
 #slide2:checked ~ .caption-wrapper #caption2 {
-    opacity: 1;
+    display: block;
 }
 #slide3:checked ~ .caption-wrapper #caption3 {
-    opacity: 1;
+    display: block;
 }
 #slide4:checked ~ .caption-wrapper #caption4 {
-    opacity: 1;
+    display: block;
 }
